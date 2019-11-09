@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { GetdataService } from 'src/app/services/getdata.service';
 import { IAppState } from 'src/app/store/state/app.state';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
+import { selectData, selectIndex, selectInterval } from 'src/app/store/selectors/data.selectors';
+import { IVideoData } from 'src/app/models/video-data';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-graphs',
@@ -9,31 +12,53 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./graphs.component.scss']
 })
 export class GraphsComponent implements OnInit {
-  chartData: Array<any>;
-  
+  chartData: any;
+  indexSub$ = this.store.pipe(select(selectIndex));
+  index: number;
+  vidData$ = this.store.pipe(select(selectData));
 
   constructor(
-
-  ) { }
+    private store: Store<IAppState>
+  ) { 
+    this.index = 0;
+  }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.generateData();
+    // setTimeout(() => {
+    //   this.generateData();
 
-      // change the data periodically
-      setInterval(() => this.generateData(), 5000);
+    //   // change the data periodically
+    //   setInterval(() => this.generateData(), 5000);
+    // });
+    this.indexSub$.subscribe(data => {
+      this.index = data;
+    });
+
+    this.vidData$.subscribe(data => {
+      this.chartData = [];
+      console.log(data);
+      console.log(data[this.index]);
+
+      Object.keys(data[this.index].emotion).forEach((key) => {
+        console.log(key)
+
+        this.chartData.push([
+          key,
+          data[this.index].emotion[key]
+        ])
+      });
     });
   }
 
-  generateData() {
-    this.chartData = [];
-    for (let i = 0; i < (8 + Math.floor(Math.random() * 10)); i++) {
-      this.chartData.push([
-        `Index ${i}`,
-        Math.floor(Math.random() * 100)
-      ]);
-    }
-    console.log(this.chartData);
-  }
+  // generateData() {
+  //   this.chartData = [];
+  //   for (let i = 0; i < (8 + Math.floor(Math.random() * 10)); i++) {
+  //     this.chartData.push([
+  //       `Index ${i}`,
+  //       Math.floor(Math.random() * 100)
+  //     ]);
+  //   }
+  //   console.log(this.chartData);
+  // }
 
 }

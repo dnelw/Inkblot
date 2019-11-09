@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { IVideoData } from 'src/app/models/video-data';
+import { ImageFrame } from 'src/app/models/image-frame';
 
 export enum EDataActions {
     SetInterval = '[Data] Setting Interval',
@@ -16,7 +17,7 @@ export class AddVideoFrame implements Action {
     public readonly type = EDataActions.AddVideoFrame;
     constructor(
         public interval_index: number,
-        public payload: IVideoData
+        public payload: ImageFrame
     ) {}
 }
 

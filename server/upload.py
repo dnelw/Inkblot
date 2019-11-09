@@ -11,29 +11,18 @@ content = None
 frames = None
 # read frame data
 
-def process_clip(content):
+def process_clip(filepath):
 
     client = speech.SpeechClient()
 
-    audio = types.RecognitionAudio(content=content)
+    audio = types.RecognitionAudio(uri='gs://audio-hackprinceton19/video.wav')
     config = types.RecognitionConfig(
         encoding = enums.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz = 48000,
-        language_code='en-US')
-    response = client.recognize(config, audio)
-
-    text = []
-    for result in response.results:
-        text.append(result.alternatives[0].transcript)
-
-    return ''.join(text)
-
-
-def analyze(data):
-    index, start, finish, frame, content = data[0], data[1], data[2], data[3], data[4]
-    text = process_clip(content[start:finish])
-    return text
-
+        language_code='en-US',
+        enable_word_time_offsets = True)
+    response = client.long_running_recognize(config=config, audio=audio).result()
+    return response.results
 
 def upload():
 
@@ -42,38 +31,14 @@ def upload():
     with open("data.json") as f:
         frames = json.load(f)
 
-    sound = AudioSegment.from_wav("video.wav")
+    audio_filepath = "./video.wav"
+    sound = AudioSegment.from_wav(audio_filepath)
     sound = sound.set_channels(1)
-    sound.export("video.wav", format="wav")
+    sound.export(audio_filepath, format="wav")
 
-    with open("video.wav", "rb") as audio_file:
-        content = audio_file.read()
-
-    # since the binary is read in as bytes, divide the content into roughly equal parts
-    duration = len(content) // len(frames)
-
-    start = 0
-    finish = duration
-
-    data = []
-
-    for i, frame in enumerate(frames):
-        frame["emotions"] = {
-            emotion: score for emotion, score in frame.items() if emotion not in ("image", "text", "file")
-        }
-        frames[i] = {k: v for k, v in frame.items() if k not in ("anger", "joy", "sorrow", "surprise", "image")}
-        data.append((i, start, finish, frame, content))
-        start += duration
-        finish += duration
-
-    with Pool(4) as pool:
-        result = pool.map(analyze, data)
-
-    for i, frame in enumerate(frames):
-        frames[i]["text"] = result[i]
-    with open("response.json", "w") as f:
-        json.dump(frames, f)
-
+    trans_results = process_clip(audio_filepath)
+    with open("lmao.txt", "w") as file:
+        file.write(str(trans_results))
 
 if __name__  == '__main__':
     upload()

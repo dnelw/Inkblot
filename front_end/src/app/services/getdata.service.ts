@@ -27,6 +27,31 @@ export class GetdataService {
       console.log(interval);
     });
     // return this.http.get(this.url);
-    return of([{cat: 1}, {dog: 2}]);
+    return of([
+      {
+        emotion: {
+          joy: 1,
+          sorrow: 5,
+          anger: 2,
+          suprised: 3
+        }
+      },
+      {
+        emotion: {
+          joy: 5,
+          sorrow: 1,
+          anger: 4,
+          suprised: 1
+        }
+      },
+      {
+        emotion: {
+          joy: 1,
+          sorrow: 3,
+          anger: 3,
+          suprised: 3
+        }
+      }
+    ]);
   }
 }
