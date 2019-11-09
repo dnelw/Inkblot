@@ -11,6 +11,8 @@ import { GraphFrameComponent } from './components/graphs/graph-frame/graph-frame
 import { TextContainerComponent } from './components/text-container/text-container.component';
 import { TextSegmentComponent } from './components/text-container/text-segment/text-segment.component';
 import { ScrubControlComponent } from './components/scrub-control/scrub-control.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/material/material.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ScrubControlComponent } from './components/scrub-control/scrub-control.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
