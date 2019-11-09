@@ -11,12 +11,14 @@ import { selectInterval } from 'src/app/store/selectors/data.selectors';
 export class ScrubControlComponent implements OnInit {
   index: number;
   intervalData$ = this.store.pipe(select(selectInterval));
+  
 
   constructor(
     private store: Store<IAppState>
   ) { }
 
   ngOnInit() {
+    
   }
 
 }
