@@ -29,7 +29,7 @@ export class DisplayerComponent implements OnInit {
     private fetchMyBoy: GetdataService,
     private store: Store<IAppState>
   ) {
-    
+    this.interval = 5;
   }
 
   onValueChanged(value: number) {
@@ -45,11 +45,11 @@ export class DisplayerComponent implements OnInit {
     this.displayState = EDisplayState.Loading;
     this.fetchMyBoy.getData().subscribe(data => {
       data.map((vidData, index) => {
+        console.log(this.interval);
         this.store.dispatch(new AddVideoFrame(
           index * this.interval,
           vidData
         ));
-        console.log(vidData);
       });
       this.displayState = EDisplayState.Analyzed;
     })
