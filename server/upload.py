@@ -30,9 +30,7 @@ def process_clip(content):
 
 
 def analyze(data):
-
-    global content, frames
-    index, start, finish, frame = data[0], data[1], data[2], data[3]
+    index, start, finish, frame, content = data[0], data[1], data[2], data[3], data[4]
     text = process_clip(content[start:finish])
     return text
 
@@ -63,8 +61,8 @@ def upload():
         frame["emotions"] = {
             emotion: score for emotion, score in frame.items() if emotion not in ("image", "text", "file")
         }
-        frames[i] = {k: v for k, v in frame.items() if k not in ("anger", "joy", "sorrow", "surprise")}
-        data.append((i, start, finish, frame))
+        frames[i] = {k: v for k, v in frame.items() if k not in ("anger", "joy", "sorrow", "surprise", "image")}
+        data.append((i, start, finish, frame, content))
         start += duration
         finish += duration
 

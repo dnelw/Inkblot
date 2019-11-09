@@ -6,7 +6,7 @@ from firebase_admin import firestore
 import json
 from capture import main
 from upload import upload
-
+import os
 
 cred = credentials.Certificate('hackprinceton.json')
 firebase_admin.initialize_app(cred)
@@ -17,16 +17,13 @@ CORS(app)
 
 @app.route('/process/<interval>')
 def process(interval):
-    main(1000*int(interval))
+    os.system("python3 capture.py" + " " + str(1000*int(interval)))
     upload()
-    return make_response()
-
-@app.route('/analysis/<uid>')
-def analysis(uid):
     frame_analysis = None
     with open("response.json") as f:
         frame_analysis = json.load(f)
+    os.system("rm -rf *.png")
     return jsonify(frame_analysis)
 
 if __name__ == '__main__':
-    app.run(port = 5004)
+    app.run(port = 5004, debug = True)
