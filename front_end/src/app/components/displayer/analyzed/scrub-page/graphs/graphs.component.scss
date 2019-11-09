@@ -1,3 +1,22 @@
+<<<<<<< HEAD
 .graphs {
     display: flex;
 }
+=======
+.graphs-row {
+    //display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 1000px;
+  }
+  
+  .graphs-row > div {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+
+#lmao {
+    overflow-y: hidden;
+}
+>>>>>>> f16e57d91c8f555a0dd5e3a28a01e0c8f201dec1

@@ -1,1 +1,6 @@
 venv/
+*.mp4
+*.wav
+*.png
+*.mp3
+*.m4a
