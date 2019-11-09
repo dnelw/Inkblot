@@ -1,4 +1,10 @@
-<div class="graphs">
-  <app-bar-graph *ngIf="chartData" [data]="chartData"></app-bar-graph>
-  <app-bar-graph *ngIf="chartData" [data]="chartData"></app-bar-graph>
+<div class="scrub-container">
+  <div class="graph-title">Session Data</div>
+  <div class="graph-text">Below are the results from the therapy session.</div>
+
+  <div class="graphs">
+    <app-bar-graph *ngIf="chartData" [data]="chartData"></app-bar-graph>
+    <app-bar-graph *ngIf="chartData" [data]="chartData"></app-bar-graph>
+  </div>
+
 </div>
