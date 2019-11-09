@@ -48,7 +48,7 @@ def analyze_frame(frame):
             surprise = response.face_annotations[0].surprise_likelihood
             anger = response.face_annotations[0].anger_likelihood
         data = {
-            #'image': encoded.decode("utf-8"),
+            'image': encoded.decode("utf-8"),
             'joy': joy,
             'sorrow': sorrow,
             'surprise': surprise,
@@ -66,11 +66,9 @@ def main():
     frames_needed = [i for i in range(0, int(duration), 5000)]
 
     p = Pool(8)
-    print(frames_needed)
     results = p.map(analyze_frame, frames_needed)
-    print(results)
-    #with open('data.json', 'w') as file:
-    #    json.dump(data, file, indent=4)
+    with open('data.json', 'w') as file:
+        json.dump(results, file, indent=4)
 
 if __name__ == "__main__":
     main()
