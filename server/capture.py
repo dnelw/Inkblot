@@ -97,5 +97,6 @@ def main(intervals = 5000):
 
 if __name__ == "__main__":
     start = time.time()
-    main()
+    if len(sys.argv) > 1:
+        main(int(sys.argv[1]))
     print("Processing time: %f seconds" % (time.time() - start))
