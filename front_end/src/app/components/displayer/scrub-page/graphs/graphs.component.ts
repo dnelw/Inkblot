@@ -27,6 +27,7 @@ export class GraphsComponent implements OnInit {
         Math.floor(Math.random() * 100)
       ]);
     }
+    console.log(this.chartData);
   }
 
 }

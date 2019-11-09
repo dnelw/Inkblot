@@ -6,13 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { GraphsComponent } from './components/graphs/graphs.component';
-import { TextContainerComponent } from './components/text-container/text-container.component';
-import { TextSegmentComponent } from './components/text-container/text-segment/text-segment.component';
-import { ScrubControlComponent } from './components/scrub-control/scrub-control.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material/material.module';
-import { AreaGraphComponent } from './components/graphs/area-graph/area-graph.component';
+import { DisplayerComponent } from './components/displayer/displayer.component';
+import { GraphsComponent } from './components/displayer/scrub-page/graphs/graphs.component';
+import { TextContainerComponent } from './components/displayer/scrub-page/text-container/text-container.component';
+import { TextSegmentComponent } from './components/displayer/scrub-page/text-container/text-segment/text-segment.component';
+import { ScrubControlComponent } from './components/displayer/scrub-page/scrub-control/scrub-control.component';
+import { AreaGraphComponent } from './components/displayer/scrub-page/graphs/area-graph/area-graph.component';
+import { ScrubPageComponent } from './components/displayer/scrub-page/scrub-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { AreaGraphComponent } from './components/graphs/area-graph/area-graph.co
     TextContainerComponent,
     TextSegmentComponent,
     ScrubControlComponent,
-    AreaGraphComponent
+    AreaGraphComponent,
+    ScrubPageComponent,
+    DisplayerComponent
   ],
   imports: [
     BrowserModule,

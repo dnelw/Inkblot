@@ -16,15 +16,10 @@ import * as d3 from 'd3';
 export class AreaGraphComponent implements OnInit, OnChanges {
   @ViewChild('chart', {static: true}) private chartContainer: ElementRef;
   @Input() private data: Array<any>;
-  private margin: any = {
-    top: 20,
-    bottom: 20,
-    left: 20, 
-    right: 20
-  }
+  private margin: any = { top: 20, bottom: 20, left: 20, right: 20};
   private chart: any;
-  private width: any;
-  private height: any;
+  private width: number;
+  private height: number;
   private xScale: any;
   private yScale: any;
   private colors: any;
@@ -40,7 +35,7 @@ export class AreaGraphComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges() { 
+  ngOnChanges() {
     if (this.chart) {
       this.updateChart();
     }
@@ -78,7 +73,7 @@ export class AreaGraphComponent implements OnInit, OnChanges {
     this.yAxis = svg.append('g')
       .attr('class', 'axis axis-y')
       .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`)
-      .call(d3.axisLeft(this.yScale));    
+      .call(d3.axisLeft(this.yScale));
   }
 
   updateChart() {
