@@ -1,0 +1,40 @@
+@import url('https://www.w3schools.com/w3css/4/w3.css');
+
+
+.btn {
+    margin: 10px;
+    border: #ffffff;
+    background-color: #50C7C0;
+    box-shadow: 1px 1px 3px 3px #43B0AA ;
+    cursor: pointer;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #145652;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 50px;
+    line-height: 30px;
+    border-radius: 7px;
+  }
+
+  /* Style the active class, and buttons on mouse-over */
+  .active{
+    background-color: #24908A;
+    color: white;
+  }
+
+  .logo {
+    height:70%;
+    margin: 11px;
+    padding-right: 7px;
+  }
+
+  .w3-bar {
+    background-color: #50C7C0;
+    height: 70px;
+    margin: 0;
+  }
+
+  .row {
+    display: flex;
+  }
