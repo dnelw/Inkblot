@@ -9,12 +9,13 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material/material.module';
 import { DisplayerComponent } from './components/displayer/displayer.component';
-import { GraphsComponent } from './components/displayer/scrub-page/graphs/graphs.component';
-import { TextContainerComponent } from './components/displayer/scrub-page/text-container/text-container.component';
-import { TextSegmentComponent } from './components/displayer/scrub-page/text-container/text-segment/text-segment.component';
-import { ScrubControlComponent } from './components/displayer/scrub-page/scrub-control/scrub-control.component';
-import { AreaGraphComponent } from './components/displayer/scrub-page/graphs/area-graph/area-graph.component';
-import { ScrubPageComponent } from './components/displayer/scrub-page/scrub-page.component';
+import { GraphsComponent } from './components/displayer/analyzed/scrub-page/graphs/graphs.component';
+import { TextContainerComponent } from './components/displayer/analyzed/scrub-page/text-container/text-container.component';
+import { TextSegmentComponent } from './components/displayer/analyzed/scrub-page/text-container/text-segment/text-segment.component';
+import { ScrubControlComponent } from './components/displayer/analyzed/scrub-page/scrub-control/scrub-control.component';
+import { AreaGraphComponent } from './components/displayer/analyzed/scrub-page/graphs/area-graph/area-graph.component';
+import { ScrubPageComponent } from './components/displayer/analyzed/scrub-page/scrub-page.component';
+import { AnalyzedComponent } from './components/displayer/analyzed/analyzed.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,8 @@ import { ScrubPageComponent } from './components/displayer/scrub-page/scrub-page
     ScrubControlComponent,
     AreaGraphComponent,
     ScrubPageComponent,
+    DisplayerComponent,
+    AnalyzedComponent,
     DisplayerComponent
   ],
   imports: [
