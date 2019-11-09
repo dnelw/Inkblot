@@ -1,6 +1,6 @@
 .d3-chart {
   width: 100%;
-  height: 400px;
+  height:300px;
 }
 
 .d3-chart .axis path,
@@ -10,4 +10,14 @@
 
 .d3-chart .axis text {
   fill: #999;
+}
+
+.graph-container {
+  width:40%;
+}
+
+.lmao {
+  display:flex;
+  flex-direction: row;
+  align-items: stretch;
 }

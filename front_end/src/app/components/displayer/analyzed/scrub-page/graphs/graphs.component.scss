@@ -1,6 +1,16 @@
-.graphs {
-    display: flex;
-    flex: 1;
-    flex-basis: 100%;
-    min-width: 500px;
+.graphs-row {
+    //display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 1000px;
+  }
+  
+  .graphs-row > div {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+
+#lmao {
+    overflow-y: hidden;
 }

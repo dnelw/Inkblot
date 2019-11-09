@@ -1,3 +1,10 @@
-<div class="graphs">
-  <app-bar-graph *ngIf="chartData" [data]="chartData"></app-bar-graph>
+
+<div class="graphs-row">
+  <div>
+    <app-area-graph *ngIf="chartData" [data]="chartData"></app-area-graph>
+  </div>
+
+  <div class="graph-row">
+    <app-area-graph *ngIf="chartData" [data]="chartData"></app-area-graph>
+  </div>
 </div>
