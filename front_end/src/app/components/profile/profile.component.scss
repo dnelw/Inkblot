@@ -1,4 +1,23 @@
-.profile {
+.profile-row {
     display: flex;
+    padding:30px;
 }
 
+.profile-image {
+    padding-right:30px;
+    vertical-align: middle;
+}
+
+.profile-class {
+    font-size: 17px;
+    margin:0;
+    color: #2D2D2D;
+}
+
+.title {
+    padding-top: 10px;
+    margin:0;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #9D9D9D;
+}
