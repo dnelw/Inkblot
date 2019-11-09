@@ -43,10 +43,10 @@ export class BarGraphComponent implements OnInit {
   createChart() {
     let element = this.chartContainer.nativeElement;
     this.width = 500 - this.margin.left - this.margin.right;
-    this.height = 500 - this.margin.top - this.margin.bottom;
+    this.height = 300 - this.margin.top - this.margin.bottom;
     let svg = d3.select(element).append('svg')
       .attr('width', 500)
-      .attr('height', 500);
+      .attr('height', 300);
 
     // chart plot area
     this.chart = svg.append('g')
