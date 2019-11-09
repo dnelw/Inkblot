@@ -13,7 +13,7 @@ import * as d3 from 'd3';
   styleUrls: ['./bar-graph.component.scss']
 })
 export class BarGraphComponent implements OnInit {
-  @ViewChild('chart', {static: true}) private chartContainer: ElementRef;
+  @ViewChild('barchart', {static: true}) private chartContainer: ElementRef;
   @Input() private data: Array<any>;
   private margin: any = { top: 20, bottom: 20, left: 20, right: 20};
   private chart: any;

@@ -16,21 +16,23 @@ import { ScrubControlComponent } from './components/displayer/analyzed/scrub-pag
 import { AreaGraphComponent } from './components/displayer/analyzed/scrub-page/graphs/area-graph/area-graph.component';
 import { ScrubPageComponent } from './components/displayer/analyzed/scrub-page/scrub-page.component';
 import { AnalyzedComponent } from './components/displayer/analyzed/analyzed.component';
+import { BarGraphComponent } from './components/displayer/analyzed/scrub-page/graphs/bar-graph/bar-graph.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     ProfileComponent,
-    GraphsComponent,
     TextContainerComponent,
     TextSegmentComponent,
     ScrubControlComponent,
-    AreaGraphComponent,
     ScrubPageComponent,
     DisplayerComponent,
     AnalyzedComponent,
-    DisplayerComponent
+    DisplayerComponent,
+    GraphsComponent,
+    AreaGraphComponent,
+    BarGraphComponent
   ],
   imports: [
     BrowserModule,
