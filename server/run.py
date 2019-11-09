@@ -15,5 +15,5 @@ if CAPTURE:
     subprocess.call(["python3", "capture.py"], cwd="../capture-frames")
     subprocess.call(["cp", "../capture-frames/video.wav", "./"])
     subprocess.call(["cp", "../capture-frames/data.json", "./"])
-subprocess.call(["python3", "Upload.py"])
+subprocess.call(["python3", "upload.py"])
 subprocess.call(["rm", "-rf", "*.png"], cwd="../capture-frames")
