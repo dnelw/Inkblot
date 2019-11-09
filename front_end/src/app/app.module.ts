@@ -17,6 +17,8 @@ import { AreaGraphComponent } from './components/displayer/analyzed/scrub-page/g
 import { ScrubPageComponent } from './components/displayer/analyzed/scrub-page/scrub-page.component';
 import { AnalyzedComponent } from './components/displayer/analyzed/analyzed.component';
 import { BarGraphComponent } from './components/displayer/analyzed/scrub-page/graphs/bar-graph/bar-graph.component';
+import { MenuComponent } from './components/displayer/menu/menu.component';
+import { LoaderComponent } from './components/displayer/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { BarGraphComponent } from './components/displayer/analyzed/scrub-page/gr
     DisplayerComponent,
     GraphsComponent,
     AreaGraphComponent,
-    BarGraphComponent
+    BarGraphComponent,
+    MenuComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

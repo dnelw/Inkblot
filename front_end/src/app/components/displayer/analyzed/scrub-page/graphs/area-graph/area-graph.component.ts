@@ -36,9 +36,9 @@ export class AreaGraphComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if (this.chart) {
-      this.updateChart();
-    }
+    // if (this.chart) {
+    //   this.updateChart();
+    // }
   }
 
   createChart() {
@@ -51,7 +51,7 @@ export class AreaGraphComponent implements OnInit, OnChanges {
 
     // chart plot area
     this.chart = svg.append('g')
-      .attr('class', 'bars')
+      .attr('class', 'area')
       .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
 
     // define X & Y domains
@@ -63,7 +63,7 @@ export class AreaGraphComponent implements OnInit, OnChanges {
     this.yScale = d3.scaleLinear().domain(yDomain).range([this.height, 0]);
 
     // bar colors
-    this.colors = d3.scaleLinear().domain([0, this.data.length]).range(<any[]>['red', 'blue']);
+    // this.colors = d3.scaleLinear().domain([0, this.data.length]).range(<any[]>['red', 'blue']);
 
     // x & y axis
     this.xAxis = svg.append('g')

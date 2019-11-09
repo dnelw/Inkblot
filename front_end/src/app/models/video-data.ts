@@ -1,5 +1,5 @@
 import { ImageFrame } from './image-frame';
 
-export interface VideoData {
+export interface IVideoData {
     [index: number]: ImageFrame; 
 }
