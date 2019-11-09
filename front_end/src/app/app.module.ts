@@ -7,12 +7,12 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GraphsComponent } from './components/graphs/graphs.component';
-import { GraphFrameComponent } from './components/graphs/graph-frame/graph-frame.component';
 import { TextContainerComponent } from './components/text-container/text-container.component';
 import { TextSegmentComponent } from './components/text-container/text-segment/text-segment.component';
 import { ScrubControlComponent } from './components/scrub-control/scrub-control.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material/material.module';
+import { AreaGraphComponent } from './components/graphs/area-graph/area-graph.component';
 
 @NgModule({
   declarations: [
@@ -20,10 +20,10 @@ import { MaterialModule } from 'src/material/material.module';
     NavigationComponent,
     ProfileComponent,
     GraphsComponent,
-    GraphFrameComponent,
     TextContainerComponent,
     TextSegmentComponent,
-    ScrubControlComponent
+    ScrubControlComponent,
+    AreaGraphComponent
   ],
   imports: [
     BrowserModule,

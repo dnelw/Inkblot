@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GraphFrameComponent } from './graph-frame.component';
+import { AreaGraphComponent } from './area-graph.component';
 
-describe('GraphFrameComponent', () => {
-  let component: GraphFrameComponent;
-  let fixture: ComponentFixture<GraphFrameComponent>;
+describe('AreaGraphComponent', () => {
+  let component: AreaGraphComponent;
+  let fixture: ComponentFixture<AreaGraphComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GraphFrameComponent ]
+      declarations: [ AreaGraphComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GraphFrameComponent);
+    fixture = TestBed.createComponent(AreaGraphComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
