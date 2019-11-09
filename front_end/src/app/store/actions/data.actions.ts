@@ -3,7 +3,8 @@ import { IVideoData } from 'src/app/models/video-data';
 
 export enum EDataActions {
     SetInterval = '[Data] Setting Interval',
-    AddVideoFrame = '[Data] Adding Video Frame Data'
+    AddVideoFrame = '[Data] Adding Video Frame Data',
+    SetIndex = '[Data] Setting Index'
 }
 
 export class SetInterval implements Action {
@@ -19,6 +20,14 @@ export class AddVideoFrame implements Action {
     ) {}
 }
 
+export class SetIndex implements Action {
+    public readonly type = EDataActions.SetIndex;
+    constructor(
+        public i: number
+    ) {}
+}
+
 export type DActions = 
     | SetInterval 
-    | AddVideoFrame;
+    | AddVideoFrame
+    | SetIndex;

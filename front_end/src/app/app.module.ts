@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import {NumberPickerModule} from '@retailify/ngx-mat-numberpicker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,9 @@ import { AnalyzedComponent } from './components/displayer/analyzed/analyzed.comp
 import { BarGraphComponent } from './components/displayer/analyzed/scrub-page/graphs/bar-graph/bar-graph.component';
 import { MenuComponent } from './components/displayer/menu/menu.component';
 import { LoaderComponent } from './components/displayer/loader/loader.component';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './store/reducers/app.reducers';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,9 @@ import { LoaderComponent } from './components/displayer/loader/loader.component'
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    NumberPickerModule,
+    MaterialModule,
+    StoreModule.forRoot(appReducers)
   ],
   providers: [],
   bootstrap: [AppComponent]

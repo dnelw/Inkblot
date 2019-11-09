@@ -18,6 +18,12 @@ export const dataReducers = (
                 [action.interval_index]: action.payload
             };
         }
+        case EDataActions.SetIndex: {
+            return {
+                ...state,
+                index: action.i
+            };
+        }
         default:
             return state;
     }

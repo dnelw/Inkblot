@@ -1,20 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { selectInterval } from '../store/selectors/data.selectors';
+import { IAppState } from '../store/state/app.state';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetdataService {
-  url = 'http://localhost:5001'
+  url = 'http://localhost:5001';
+  interval$ = this.store.pipe(select(selectInterval));
 
-  constructor(private http: HttpClient) {
-    this.getData().subscribe(data => {
-      console.log(data);
-    });
+  constructor(
+    private http: HttpClient,
+    private store: Store<IAppState>
+  ) {
+    // this.getData().subscribe(data => {
+    //   console.log(data);
+    // });
   }
 
   getData(): Observable<any> {
-    return this.http.get(this.url);
+    this.interval$.subscribe(interval => {
+      console.log('#########');
+      console.log(interval);
+    });
+    // return this.http.get(this.url);
+    return of([{cat: 1}, {dog: 2}]);
   }
 }

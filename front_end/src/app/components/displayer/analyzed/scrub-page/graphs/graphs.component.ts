@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GetdataService } from 'src/app/services/getdata.service';
+import { IAppState } from 'src/app/store/state/app.state';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-graphs',
@@ -7,8 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GraphsComponent implements OnInit {
   chartData: Array<any>;
+  
 
-  constructor() { }
+  constructor(
+
+  ) { }
 
   ngOnInit() {
     setTimeout(() => {

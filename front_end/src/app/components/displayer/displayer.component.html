@@ -1,1 +1,25 @@
-<app-analyzed></app-analyzed>
+<div>
+    <div *ngIf="displayState == 0">
+        <img src="assets/logo.png"/>
+        <h1>Welcome</h1>
+        <div class="menu-interval-set">
+            <h2>Set Time</h2>
+            <ngx-mat-numberpicker 
+                [min]="1"
+                [max]="10"
+                [default]="5"
+                (onChange)="onValueChanged($event)"
+                step="1">
+            </ngx-mat-numberpicker>
+        </div>
+        <button mat-button (click)="fetchData()">
+            Analyze
+        </button>
+    </div>
+    <div *ngIf="displayState == 1">
+        Loading
+    </div>
+    <div *ngIf="displayState == 2">
+        <app-analyzed></app-analyzed>
+    </div>
+</div>
