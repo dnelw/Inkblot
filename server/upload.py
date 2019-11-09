@@ -29,6 +29,12 @@ def process_clip(content):
     return ''.join(text)
 
 
+def split(response, num_frames):
+    # response has word, start time, end time
+    frame = 0
+    audio_length = 100
+    length_frame = audio_length // num_frames
+
 def analyze(data):
     index, start, finish, frame, content = data[0], data[1], data[2], data[3], data[4]
     text = process_clip(content[start:finish])
