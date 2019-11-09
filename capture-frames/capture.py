@@ -8,7 +8,7 @@ import functools
 from multiprocessing import Pool
 from google.cloud import vision
 
-video_path = 'VID_20191109_100400.mp4'
+video_path = 'TRANSCRIBE.mp4'
 client = vision.ImageAnnotatorClient()
 
 def video_to_mp3(file_name):
@@ -24,9 +24,12 @@ def video_to_mp3(file_name):
 
 def analyze_frame(frame):
     print("Analyzing frame %d" % frame)
+    success = False
+    image = None
     vid = cv2.VideoCapture(video_path)
     vid.set(cv2.CAP_PROP_POS_MSEC, frame)
     success, image = vid.read()
+    vid.release()
     if(success):
         print("Successful read on frame %d" % frame)
         response = None
@@ -63,10 +66,12 @@ def main():
     vid = cv2.VideoCapture(video_path)
     vid.set(cv2.CAP_PROP_POS_AVI_RATIO,1)
     duration = vid.get(cv2.CAP_PROP_POS_MSEC)
-    frames_needed = [i for i in range(0, int(duration), 5000)]
-
+    vid.release()
+    intervals = 5000
+    frames_needed = [i for i in range(0, int(duration), intervals)]
     p = Pool(8)
     results = p.map(analyze_frame, frames_needed)
+    print("Analyzed %d frames" % len(results))
     with open('data.json', 'w') as file:
         json.dump(results, file, indent=4)
 
