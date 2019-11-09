@@ -1,16 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { GraphsComponent } from './components/graphs/graphs.component';
+import { GraphFrameComponent } from './components/graphs/graph-frame/graph-frame.component';
+import { TextContainerComponent } from './components/text-container/text-container.component';
+import { TextSegmentComponent } from './components/text-container/text-segment/text-segment.component';
+import { ScrubControlComponent } from './components/scrub-control/scrub-control.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavigationComponent,
+    ProfileComponent,
+    GraphsComponent,
+    GraphFrameComponent,
+    TextContainerComponent,
+    TextSegmentComponent,
+    ScrubControlComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

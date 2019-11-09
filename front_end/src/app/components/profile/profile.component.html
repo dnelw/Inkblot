@@ -1,0 +1,8 @@
+<div class="profile">
+    <div *ngIf="image" class="profile-image">
+        <img src="data:image/png;base64,{{image}}" />
+    </div>
+    <div *ngIf="name" class="profile-class">
+        {{ name }}
+    </div>
+</div>
