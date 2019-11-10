@@ -35,7 +35,6 @@ def get_frames(interval):
     emotions = ("joy", "sorrow", "surprise", "anger")
     with open("data.json", "r") as f:
         frames = json.load(f)
-    frames = [{k: v for k, v in frames[i].items() for i in range(len(frames))]
     for i, frame in enumerate(frames):
         frames[i]["emotions"] = {}
         for emotion in emotions:
