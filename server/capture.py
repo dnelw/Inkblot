@@ -18,6 +18,7 @@ def video_to_mp3(file_name):
     try:
         file, extension = os.path.splitext(file_name)
         # Convert video into .wav file
+        os.system('rm -rf video.wav')
         os.system('ffmpeg -y -i {file}{ext} {file}.wav'.format(file=file, ext=extension))
     except OSError as err:
         print(err.reason)

@@ -23,7 +23,23 @@ def process_clip(filepath):
     return response.results
 
 def get_frames(interval):
-    data, frames = None, None
+    audio_filepath = "./video.wav"
+    sound = AudioSegment.from_wav(audio_filepath)
+    sound = sound.set_channels(1)
+    sound.export(audio_filepath, format="wav")
+
+    trans_results = process_clip(audio_filepath)
+    content = []
+    for i in range(len(trans_results)):
+        content.append(trans_results[i].alternatives[0].words)
+    content = [(content[i][j].start_time.seconds, content[i][j].start_time.nanos, content[i][j].end_time.seconds,
+                content[i][j].end_time.nanos, content[i][j].word) for i in range(len(content)) for j in
+               range(len(content[i]))]
+
+    frames = content
+
+    data = None
+
     emotions = ("joy", "sorrow", "surprise", "anger")
     with open("test.pickle",  "rb") as f:
         data = pickle.load(f)

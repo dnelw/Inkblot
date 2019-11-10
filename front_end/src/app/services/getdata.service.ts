@@ -1,22 +1,19 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { select, Store } from '@ngrx/store';
-import { selectInterval } from '../store/selectors/data.selectors';
-import { IAppState } from '../store/state/app.state';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable, of } from "rxjs";
+import { select, Store } from "@ngrx/store";
+import { selectInterval } from "../store/selectors/data.selectors";
+import { IAppState } from "../store/state/app.state";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class GetdataService {
-  url = 'http://4a4e954d.ngrok.io/process/';
+  url = "http://35.221.34.118/process/";
   interval$ = this.store.pipe(select(selectInterval));
   inter: number;
 
-  constructor(
-    private http: HttpClient,
-    private store: Store<IAppState>
-  ) {
+  constructor(private http: HttpClient, private store: Store<IAppState>) {
     // this.getData().subscribe(data => {
     //   console.log(data);
     // });
@@ -24,7 +21,7 @@ export class GetdataService {
 
   getData(): Observable<any> {
     this.interval$.subscribe(interval => {
-      console.log('#########');
+      console.log("#########");
       this.inter = interval;
     });
 
