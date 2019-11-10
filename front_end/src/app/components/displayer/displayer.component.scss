@@ -24,7 +24,7 @@
 
 .menu-container {
     margin: 40px;
-    margin-top:0px;
+    margin-top:10px;
     margin-bottom:0;
     border-style: solid;
     border-width: 2px;
@@ -39,8 +39,10 @@
 }
 
 .analyze-button {
-        padding-left: 30px;
-        padding-right: 30px;
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-bottom: 20px;
         background-color: #50C7C0;
         box-shadow: 2px 2px #43B0AA ;
         color: white;
