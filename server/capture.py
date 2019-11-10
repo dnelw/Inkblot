@@ -11,7 +11,7 @@ from google.cloud import vision
 from google.cloud import storage
 from pydub import AudioSegment
 
-video_path = '../VID_20191109_234320.mp4'
+video_path = '../FACIAL_EXPR.mp4'
 client = vision.ImageAnnotatorClient()
 debug_mode = 1
 
