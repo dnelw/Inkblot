@@ -28,6 +28,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProgressComponent } from './components/progress/progress.component';
 import { PatientComponent } from './components/patient/patient.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ImageAteventComponent } from './components/displayer/analyzed/scrub-page/graphs/image-atevent/image-atevent.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -55,7 +56,8 @@ const appRoutes: Routes = [
     LoaderComponent,
     ProgressComponent,
     PatientComponent,
-    DashboardComponent
+    DashboardComponent,
+    ImageAteventComponent
   ],
   imports: [
     RouterModule.forRoot(

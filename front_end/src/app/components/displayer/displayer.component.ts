@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { GetdataService } from 'src/app/services/getdata.service';
-import { selectInterval } from 'src/app/store/selectors/data.selectors';
+import { selectInterval, selectData } from 'src/app/store/selectors/data.selectors';
 import { IAppState } from 'src/app/store/state/app.state';
 import { Store, select } from '@ngrx/store';
 import { AddVideoFrame, SetInterval } from 'src/app/store/actions/data.actions';
@@ -20,6 +20,7 @@ export enum EDisplayState {
 })
 export class DisplayerComponent implements OnInit {
   interval$ = this.store.pipe(select(selectInterval));
+  vidData$ = this.store.pipe(select(selectData));
   interval: number;
   displayState = EDisplayState.Menu;
   EDisplayState: EDisplayState;
@@ -44,17 +45,28 @@ export class DisplayerComponent implements OnInit {
   }  
 
   fetchData() {
-    this.displayState = EDisplayState.Loading;
-    this.fetchMyBoy.getData().subscribe(data => {
-      data.map((vidData, index) => {
-        console.log(this.interval);
-        this.store.dispatch(new AddVideoFrame(
-          index * this.interval,
-          vidData
-        ));
-      });
-      this.displayState = EDisplayState.Analyzed;
+    let isNull = true;
+    this.vidData$.subscribe(data => {
+      isNull = data === null;
     })
+
+    this.displayState = EDisplayState.Loading;
+
+    if (isNull) {
+    
+      this.fetchMyBoy.getData().subscribe(data => {
+        data.map((vidData, index) => {
+          console.log(this.interval);
+          this.store.dispatch(new AddVideoFrame(
+            index * this.interval,
+            vidData
+          ));
+        });
+        this.displayState = EDisplayState.Analyzed;
+      })
+    } else {
+      this.displayState = EDisplayState.Analyzed;
+    }
   }
 
   ngOnInit() {

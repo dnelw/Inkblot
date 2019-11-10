@@ -71,7 +71,7 @@ export class BarGraphComponent implements OnInit {
           scales: {
             yAxes: [{
               ticks: {
-                beginAtZero: true
+                beginAtZero: true,
               }
             }]
           }
