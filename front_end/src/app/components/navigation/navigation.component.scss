@@ -2,25 +2,21 @@
 
 
 .btn {
-    margin: 10px;
-    border: #ffffff;
-    background-color: #50C7C0;
-    box-shadow: 1px 1px 3px 3px #43B0AA ;
+    margin: 15px;
+    background-color: black;
+    // box-shadow: 1px 1px 3px 3px #43B0AA ;
     cursor: pointer;
     font-size: 12px;
     letter-spacing: 1px;
-    color: #145652;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 50px;
-    line-height: 30px;
+    color: white;
+    height: 40px;
     border-radius: 7px;
   }
 
   /* Style the active class, and buttons on mouse-over */
   .active{
-    background-color: #24908A;
-    color: white;
+    color: black;
+    background-color: #A6EDE9;
   }
 
   .logo {
@@ -30,7 +26,7 @@
   }
 
   .w3-bar {
-    background-color: #50C7C0;
+    background-color: black;
     height: 70px;
     margin: 0;
   }
