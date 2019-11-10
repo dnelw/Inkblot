@@ -27,8 +27,11 @@ import { environment } from 'src/environments/environment';
 import { RouterModule, Routes } from '@angular/router';
 import { ProgressComponent } from './components/progress/progress.component';
 import { PatientComponent } from './components/patient/patient.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+  { path: 'dashboard', component: DashboardComponent},
   { path: 'progress', component: ProgressComponent},
   { path: 'patient', component: PatientComponent}
 ]
@@ -51,7 +54,8 @@ const appRoutes: Routes = [
     MenuComponent,
     LoaderComponent,
     ProgressComponent,
-    PatientComponent
+    PatientComponent,
+    DashboardComponent
   ],
   imports: [
     RouterModule.forRoot(
