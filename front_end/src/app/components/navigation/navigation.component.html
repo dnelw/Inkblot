@@ -3,9 +3,9 @@
   <div id="myDIV" class="w3-bar row">
     <img src="assets/logo.png" class="logo"/>
     <nav>
-      <a routerLink="/"><button class="w3-button w3-hover-teal btn active">DASHBOARD</button></a>
-      <a routerLink="/progress"><button class="w3-button w3-hover-teal btn">PROGRESS</button></a>
-      <a routerLink="/patient"><button class="w3-button w3-hover-teal btn">PATIENT</button></a>
+      <a routerLink="/"><button (click)="selectRoute(0)" class="w3-button w3-hover-teal btn {{ active[0] }}">DASHBOARD</button></a>
+      <a routerLink="/progress"><button (click)="selectRoute(1)" class="w3-button w3-hover-teal btn {{ active[1] }}">PROGRESS</button></a>
+      <a routerLink="/patient"><button (click)="selectRoute(2)" class="w3-button w3-hover-teal btn {{ active[2] }}">PATIENT</button></a>
     </nav>
   </div>
 
