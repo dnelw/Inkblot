@@ -24,6 +24,17 @@ import { LoaderComponent } from './components/displayer/loader/loader.component'
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store/reducers/app.reducers';
 import { environment } from 'src/environments/environment';
+import { RouterModule, Routes } from '@angular/router';
+import { ProgressComponent } from './components/progress/progress.component';
+import { PatientComponent } from './components/patient/patient.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+const appRoutes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'progress', component: ProgressComponent},
+  { path: 'patient', component: PatientComponent}
+]
 
 @NgModule({
   declarations: [
@@ -41,9 +52,15 @@ import { environment } from 'src/environments/environment';
     AreaGraphComponent,
     BarGraphComponent,
     MenuComponent,
-    LoaderComponent
+    LoaderComponent,
+    ProgressComponent,
+    PatientComponent,
+    DashboardComponent
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes
+    ),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

@@ -36,10 +36,12 @@ export class GraphsComponent implements OnInit {
       this.vidData$.subscribe(data => {
         this.chartData = [];
   
-        Object.keys(data[this.index].emotion).forEach((key) => {
+        console.log(data);
+
+        Object.keys(data[this.index].emotions).forEach((key) => {
           this.chartData.push([
             key,
-            data[this.index].emotion[key]
+            data[this.index].emotions[key]
           ]);
         });
 
