@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ScrubPageComponent implements OnInit {
 
   constructor() { 
-    console.log("fadsfsfsad");
+    // console.log("fadsfsfsad");
   }
 
   ngOnInit() {

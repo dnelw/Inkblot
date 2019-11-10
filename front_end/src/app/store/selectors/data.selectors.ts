@@ -19,3 +19,15 @@ export const selectIndex = createSelector(
     (state: IDataState) => state.index
 );
 
+export const selectSlice = createSelector(
+    selectApp,
+    (state: IDataState, props) => {
+        return state.data[props.index];
+    }
+);
+
+export const selectLength = createSelector(
+    selectApp,
+    (state: IDataState) => Object.keys(state.data).length
+)
+

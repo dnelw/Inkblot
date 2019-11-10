@@ -1,25 +1,44 @@
 <div>
-    <div *ngIf="displayState == 0">
-        <img src="assets/logo.png"/>
-        <h1>Welcome</h1>
-        <div class="menu-interval-set">
-            <h2>Set Time</h2>
-            <ngx-mat-numberpicker 
-                [min]="1"
-                [max]="10"
-                [default]="5"
-                (onChange)="onValueChanged($event)"
-                step="1">
-            </ngx-mat-numberpicker>
+    <div *ngIf="displayState == 0" class="menu-container">
+
+        <div class="welcome-container">
+            <div class="page-title">Welcome To TheraMe!</div>
+            <div class="page-text">
+                TheraMe is a tool for analyzing therapy sessions in a detailed and meaningful way. 
+                Use this tool for keeping progresss and analyzing client sessions, ultimately improving mental health positively. 
+                To begin analyzing a therapy session, select time intervals to track data in. 
+            </div>
+            
+            <div>
+                <img src="assets/picture.png" class="menu-image"/>
+            </div>
         </div>
-        <button mat-button (click)="fetchData()">
-            Analyze
-        </button>
+
+        <div class="started-container">
+            <div class="menu-interval-set">
+                <div class="title">SET TIME</div>
+                <ngx-mat-numberpicker>
+                    [min]="1"
+                    [max]="10"
+                    [default]="5"
+                    (onChange)="onValueChanged($event)"
+                    step="1">
+                </ngx-mat-numberpicker>
+            </div>
+
+            <button mat-button (click)="fetchData()" class="analyze-button">
+                ANALYZE
+            </button>
+        </div>
+
     </div>
+
     <div *ngIf="displayState == 1">
-        Loading
+        <app-loader></app-loader>
     </div>
+
     <div *ngIf="displayState == 2">
         <app-analyzed></app-analyzed>
     </div>
+
 </div>

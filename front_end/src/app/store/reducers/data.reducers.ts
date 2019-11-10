@@ -1,5 +1,6 @@
 import { DActions, EDataActions } from '../actions/data.actions';
 import { initialDataState, IDataState } from '../state/data.state';
+import { IVideoData } from 'src/app/models/video-data';
 
 export const dataReducers = (
     state = initialDataState,
@@ -13,9 +14,14 @@ export const dataReducers = (
             };
         }
         case EDataActions.AddVideoFrame: {
+            const videoKilled: IVideoData = {
+                ...state.data,
+                [action.interval_index]: action.payload
+            }
+
             return {
                 ...state,
-                [action.interval_index]: action.payload
+                data: videoKilled
             };
         }
         case EDataActions.SetIndex: {

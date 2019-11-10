@@ -1,3 +1,86 @@
 .menu-interval-set {
     display: flex;
+    flex-direction: column;
+    border-width: 2px;
+    border-color: #D9D9D9;
+    border-radius: 10px;
+    
+}
+
+.page-title {
+    font-size: 22px;
+    margin:25px;
+    margin-bottom:0;
+    color: #2D2D2D;
+}
+
+.page-text {
+    font-size: 14px;
+    margin: 30px;
+    margin-top:20px;
+    margin-bottom:0;
+    color: #2D2D2D;
+
+}
+
+.menu-container {
+    display:flex;
+    flex-direction: row;
+    margin: 40px;
+    margin-top:10px;
+    margin-bottom:0;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #D9D9D9;
+    border-radius: 10px;
+    text-align: left;
+    align-content:left;
+}
+
+.menu-image {
+    width: 50%;
+}
+
+.analyze-button {
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: 40px;
+        background-color: black;
+        box-shadow: 2px 2px #BDBDBD ;
+        color: #50C7C0;
+        cursor: pointer;
+        font-size: 12px;
+        height: 50px;
+        line-height:30px;
+        letter-spacing: 1px;
+        border-radius: 7px;
+}
+
+.analyze-button:hover {
+    background-color: #24908A;
+    color: white;
+}
+
+.title {
+    margin:0;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #9D9D9D;
+}
+
+.started-container {
+    margin: 40px;
+    background-color: #F9F9F9;
+    border-radius: 7px;
+    padding:40px;
+    text-align:center;
+    float:right;
+}
+
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    width:65%;
+    margin: 20px;
 }

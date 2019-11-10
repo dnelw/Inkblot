@@ -197,7 +197,7 @@
 }
 , alternatives {
   transcript: " all right have you ever seen a house or before"
-  confidence: 0.8733211755752563
+  confidence: 0.8733199834823608
   words {
     start_time {
       seconds: 12
@@ -387,7 +387,7 @@
 }
 , alternatives {
   transcript: " what\'s the problem from your Viewpoint why can\'t you get over the death of your pets"
-  confidence: 0.966574490070343
+  confidence: 0.9665714502334595
   words {
     start_time {
       seconds: 21
@@ -565,7 +565,7 @@
 }
 , alternatives {
   transcript: " because I had my pet for a really long time and it really holds a soft space in my heart"
-  confidence: 0.9642247557640076
+  confidence: 0.9642221331596375
   words {
     start_time {
       seconds: 28
@@ -783,7 +783,7 @@
 }
 , alternatives {
   transcript: " all right and what you think you want to get out of this session I want to be able to talk about my pet and be able to cope with his dad"
-  confidence: 0.9029919505119324
+  confidence: 0.9029873013496399
   words {
     start_time {
       seconds: 40
@@ -1131,7 +1131,7 @@
 }
 , alternatives {
   transcript: " so maybe overall how would you describe your mood"
-  confidence: 0.969986617565155
+  confidence: 0.9699850082397461
   words {
     start_time {
       seconds: 55
@@ -1244,7 +1244,7 @@
 }
 , alternatives {
   transcript: " and a little bit of anger and whatever you\'re trying to do to cope with that I\'ve been trying to meditate and take deep breaths"
-  confidence: 0.7995169162750244
+  confidence: 0.7995177507400513
   words {
     start_time {
       seconds: 64

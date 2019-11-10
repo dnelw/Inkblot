@@ -1,1 +1,11 @@
-<p>scrub-control works!</p>
+<div class="slider">
+    <mat-slider
+        thumbLabel
+        [displayWith]="formatLabel"
+        tickInterval="1000"
+        min="0"
+        max="{{ dataLength }}"
+        [value]="val"
+        (input)="sliderChange($event)"
+        step="{{ interval }}"></mat-slider>
+</div>

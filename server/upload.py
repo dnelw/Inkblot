@@ -1,11 +1,8 @@
-import firebase_admin, json
-from firebase_admin import credentials
-from firebase_admin import firestore
+import json
 from google.cloud import speech
 from google.cloud.speech import enums
 from google.cloud.speech import types
 from pydub import AudioSegment
-from multiprocessing import Pool
 import pickle
 
 content = None
@@ -25,11 +22,35 @@ def process_clip(filepath):
     response = client.long_running_recognize(config=config, audio=audio).result()
     return response.results
 
-def split():
-    data = None
+def get_frames(interval):
+    data, frames = None, None
+    emotions = ("joy", "sorrow", "surprise", "anger")
     with open("test.pickle",  "rb") as f:
         data = pickle.load(f)
-    i = 0
+    with open("data.json", "r") as f:
+        frames = json.load(f)
+    frames = [{k: v for k, v in frames[i].items() if k not in ("image")} for i in range(len(frames))]
+    for i, frame in enumerate(frames):
+        frames[i]["emotions"] = {}
+        for emotion in emotions:
+            frames[i]["emotions"][emotion] = frame[emotion]
+    frames = [{k: v for k, v in frames[i].items() if k not in emotions} for i in range(len(frames))]
+    start, finish = 0, interval
+    data_counter = 0
+    for i, frame in enumerate(frames):
+        text = ""
+        if data_counter >= len(data):
+            break
+        time = data[data_counter][2] + (data[data_counter][3] / (10**9))
+        while time <= finish and data_counter < len(data):
+            text += (data[data_counter][4] + " ")
+            time = data[data_counter][2] + (data[data_counter][3] / (10 ** 9))
+            data_counter += 1
+        start += interval
+        finish += interval
+        frames[i]["text"] = text
+    return frames
+
 
 def upload():
 
@@ -56,4 +77,4 @@ def upload():
 
 if __name__  == '__main__':
     #upload()
-    split()
+    get_frames(5)

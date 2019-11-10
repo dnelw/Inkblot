@@ -1,15 +1,16 @@
 .profile-row {
     display: flex;
+    flex-direction: row;
     padding:30px;
 }
 
 .profile-image {
     padding-right:30px;
-    vertical-align: middle;
+    
 }
 
 .profile-class {
-    font-size: 17px;
+    font-size: 14px;
     margin:0;
     color: #2D2D2D;
 }
