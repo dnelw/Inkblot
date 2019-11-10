@@ -25,36 +25,36 @@ export class GetdataService {
       this.inter = interval;
     });
 
-    // return this.http.get(this.url + this.inter);
+    return this.http.get(this.url + this.inter);
     // return this.http.get(this.url);
-    return of([
-      {
-        text: "Hello my darling",
-        emotions: {
-          joy: 1,
-          sorrow: 5,
-          anger: 2,
-          suprised: 3
-        }
-      },
-      {
-        text: "Hello my honey",
-        emotions: {
-          joy: 5,
-          sorrow: 1,
-          anger: 4,
-          suprised: 1
-        }
-      },
-      {
-        text: "Hello my rag time",
-        emotions: {
-          joy: 1,
-          sorrow: 3,
-          anger: 3,
-          suprised: 3
-        }
-      }
-    ]);
+    // return of([
+    //   {
+    //     text: "Hello my darling",
+    //     emotions: {
+    //       joy: 1,
+    //       sorrow: 5,
+    //       anger: 2,
+    //       suprised: 3
+    //     }
+    //   },
+    //   {
+    //     text: "Hello my honey",
+    //     emotions: {
+    //       joy: 5,
+    //       sorrow: 1,
+    //       anger: 4,
+    //       suprised: 1
+    //     }
+    //   },
+    //   {
+    //     text: "Hello my rag time",
+    //     emotions: {
+    //       joy: 1,
+    //       sorrow: 3,
+    //       anger: 3,
+    //       suprised: 3
+    //     }
+    //   }
+    // ]);
   }
 }

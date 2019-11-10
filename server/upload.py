@@ -9,7 +9,7 @@ content = None
 frames = None
 # read frame data
 
-def process_clip(filepath):
+def process_clip():
 
     client = speech.SpeechClient()
 
@@ -23,12 +23,7 @@ def process_clip(filepath):
     return response.results
 
 def get_frames(interval):
-    audio_filepath = "./video.wav"
-    sound = AudioSegment.from_wav(audio_filepath)
-    sound = sound.set_channels(1)
-    sound.export(audio_filepath, format="wav")
-
-    trans_results = process_clip(audio_filepath)
+    trans_results = process_clip()
     content = []
     for i in range(len(trans_results)):
         content.append(trans_results[i].alternatives[0].words)
@@ -36,13 +31,8 @@ def get_frames(interval):
                 content[i][j].end_time.nanos, content[i][j].word) for i in range(len(content)) for j in
                range(len(content[i]))]
 
-    frames = content
-
-    data = None
-
+    data = content
     emotions = ("joy", "sorrow", "surprise", "anger")
-    with open("test.pickle",  "rb") as f:
-        data = pickle.load(f)
     with open("data.json", "r") as f:
         frames = json.load(f)
     frames = [{k: v for k, v in frames[i].items() if k not in ("image")} for i in range(len(frames))]

@@ -8,8 +8,9 @@ import functools
 from multiprocessing import Pool
 from multiprocessing import cpu_count
 from google.cloud import vision
+from pydub import AudioSegment
 
-video_path = 'video.mp4'
+video_path = '../VID_20191109_234320.mp4'
 client = vision.ImageAnnotatorClient()
 debug_mode = 1
 
@@ -18,8 +19,11 @@ def video_to_mp3(file_name):
     try:
         file, extension = os.path.splitext(file_name)
         # Convert video into .wav file
-        os.system('rm -rf video.wav')
-        os.system('ffmpeg -y -i {file}{ext} {file}.wav'.format(file=file, ext=extension))
+        os.system('ffmpeg -y -ac 1 -i {file}{ext} {file}.wav'.format(file=file, ext=extension))
+        print("Grabbing %s.wav" % file)
+        sound = AudioSegment.from_wav("%s.wav" % file)
+        sound = sound.set_channels(1)
+        sound.export("%s.wav" % file, format="wav")
     except OSError as err:
         print(err.reason)
         exit(1)
