@@ -1,11 +1,8 @@
-import firebase_admin, json
-from firebase_admin import credentials
-from firebase_admin import firestore
+import json
 from google.cloud import speech
 from google.cloud.speech import enums
 from google.cloud.speech import types
 from pydub import AudioSegment
-from multiprocessing import Pool
 
 content = None
 frames = None

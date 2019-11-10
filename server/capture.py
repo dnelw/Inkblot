@@ -95,8 +95,6 @@ def main(intervals = 5000):
     with open('data.json', 'w') as file:
         json.dump(results, file, indent=4)
 
-def generate_word_cloud(frames):
-    
 if __name__ == "__main__":
     start = time.time()
     if len(sys.argv) > 1:
