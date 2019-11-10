@@ -8,6 +8,7 @@ import functools
 from multiprocessing import Pool
 from multiprocessing import cpu_count
 from google.cloud import vision
+from google.cloud import storage
 from pydub import AudioSegment
 
 video_path = '../VID_20191109_234320.mp4'
@@ -24,6 +25,10 @@ def video_to_mp3(file_name):
         sound = AudioSegment.from_wav("%s.wav" % file)
         sound = sound.set_channels(1)
         sound.export("%s.wav" % file, format="wav")
+        storage_client = storage.Client()
+        bucket = storage_client.get_bucket('audio-hackprinceton19')
+        blob = bucket.blob('video.wav')
+        blob.upload_from_filename("%s.wav" % file)
     except OSError as err:
         print(err.reason)
         exit(1)
