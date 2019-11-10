@@ -120,7 +120,6 @@ export class BarGraphComponent implements OnInit {
   updateChart() {
     let ydat: Array<any> = [];
 
-    console.log("$$$$$$$$$$");
     this.dataPoints.map((value, i) => {
       console.log(value);
       // this.labels.push(value[0]);
@@ -128,7 +127,6 @@ export class BarGraphComponent implements OnInit {
         value[1]
       );
     });
-    console.log("$$$$$$$$$$");
 
     this.chart.data.datasets.pop();
     this.chart.data.datasets.push({

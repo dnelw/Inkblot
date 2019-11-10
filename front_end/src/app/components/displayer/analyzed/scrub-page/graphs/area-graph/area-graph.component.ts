@@ -6,7 +6,7 @@ import {
   Input,
   OnInit
 } from '@angular/core';
-import * as d3 from 'd3';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-area-graph',
@@ -14,23 +14,21 @@ import * as d3 from 'd3';
   styleUrls: ['./area-graph.component.scss']
 })
 export class AreaGraphComponent implements OnInit, OnChanges {
-  @ViewChild('chart', {static: true}) private chartContainer: ElementRef;
-  @Input() private data: Array<any>;
-  private margin: any = { top: 20, bottom: 20, left: 20, right: 20};
-  private chart: any;
-  private width: number;
-  private height: number;
-  private xScale: any;
-  private yScale: any;
-  private colors: any;
-  private xAxis: any;
-  private yAxis: any;
+  @ViewChild('areaChart', {static: true}) private chartContainer;
+  @Input() private dataPoints: Array<any>;
+  chart: any;
+  labels: Array<string>;
+  colors: Array<string>;
 
-  constructor() { }
+
+  constructor() {
+    this.labels = [];
+    this.colors = ["#99f4ef", "#ff7777","#4caae4","#fa9dcf"];
+  }
 
   ngOnInit() {
     this.createChart();
-    if (this.data) {
+    if (this.dataPoints) {
       this.updateChart();
     }
   }
@@ -42,10 +40,64 @@ export class AreaGraphComponent implements OnInit, OnChanges {
   }
 
   createChart() {
-    
+    let ydat: Array<any> = [];
+
+    this.dataPoints.map((value, i) => {
+      this.labels.push(value[0]);
+      ydat.push(
+        value[1]
+      );
+    });
+
+    console.log(ydat);
+
+    this.chart = new Chart(this.chartContainer.nativeElement, {
+        type: 'polarArea',
+        data: {
+          labels: this.labels,
+          datasets: [
+            {
+              backgroundColor: this.colors,
+              data: ydat
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Analysis Bar Chart'
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+    });
   }
 
   updateChart() {
-    
+    let ydat: Array<any> = [];
+
+    this.dataPoints.map((value, i) => {
+      console.log(value);
+      // this.labels.push(value[0]);
+      ydat.push(
+        value[1]
+      );
+    });
+
+    this.chart.data.datasets.pop();
+    this.chart.data.datasets.push({
+      labels: this.labels,
+      backgroundColor: this.colors,
+      data: ydat
+    });
+
+    this.chart.update();
   }
 }
