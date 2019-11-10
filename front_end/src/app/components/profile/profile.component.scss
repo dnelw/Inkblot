@@ -1,11 +1,12 @@
 .profile-row {
     display: flex;
+    flex-direction: row;
     padding:30px;
 }
 
 .profile-image {
     padding-right:30px;
-    vertical-align: middle;
+    
 }
 
 .profile-class {
