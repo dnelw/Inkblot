@@ -32,20 +32,18 @@ export class GraphsComponent implements OnInit {
     // });
     this.indexSub$.subscribe(data => {
       this.index = data;
-    });
 
-    this.vidData$.subscribe(data => {
-      this.chartData = [];
-      console.log(data);
-      console.log(data[this.index]);
+      this.vidData$.subscribe(data => {
+        this.chartData = [];
+  
+        Object.keys(data[this.index].emotion).forEach((key) => {
+          this.chartData.push([
+            key,
+            data[this.index].emotion[key]
+          ]);
+        });
 
-      Object.keys(data[this.index].emotion).forEach((key) => {
-        console.log(key)
-
-        this.chartData.push([
-          key,
-          data[this.index].emotion[key]
-        ])
+        
       });
     });
   }
