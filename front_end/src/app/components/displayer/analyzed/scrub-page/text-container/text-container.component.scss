@@ -1,8 +1,11 @@
 .highlight {
-  
 }
 
 .no-highlight {
   color: transparent;
-  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+#text-div {
+  margin: 40px;
 }
