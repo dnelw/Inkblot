@@ -9,8 +9,9 @@ import { IAppState } from '../store/state/app.state';
   providedIn: 'root'
 })
 export class GetdataService {
-  url = 'http://localhost:5001';
+  url = 'http://4a4e954d.ngrok.io/process/';
   interval$ = this.store.pipe(select(selectInterval));
+  inter: number;
 
   constructor(
     private http: HttpClient,
@@ -24,34 +25,39 @@ export class GetdataService {
   getData(): Observable<any> {
     this.interval$.subscribe(interval => {
       console.log('#########');
-      console.log(interval);
+      this.inter = interval;
     });
+
+    return this.http.get(this.url + this.inter);
     // return this.http.get(this.url);
-    return of([
-      {
-        emotion: {
-          joy: 1,
-          sorrow: 5,
-          anger: 2,
-          suprised: 3
-        }
-      },
-      {
-        emotion: {
-          joy: 5,
-          sorrow: 1,
-          anger: 4,
-          suprised: 1
-        }
-      },
-      {
-        emotion: {
-          joy: 1,
-          sorrow: 3,
-          anger: 3,
-          suprised: 3
-        }
-      }
-    ]);
+    // return of([
+    //   {
+    //     text: "Hello my darling",
+    //     emotions: {
+    //       joy: 1,
+    //       sorrow: 5,
+    //       anger: 2,
+    //       suprised: 3
+    //     }
+    //   },
+    //   {
+    //     text: "Hello my honey",
+    //     emotions: {
+    //       joy: 5,
+    //       sorrow: 1,
+    //       anger: 4,
+    //       suprised: 1
+    //     }
+    //   },
+    //   {
+    //     text: "Hello my rag time",
+    //     emotions: {
+    //       joy: 1,
+    //       sorrow: 3,
+    //       anger: 3,
+    //       suprised: 3
+    //     }
+    //   }
+    // ]);
   }
 }

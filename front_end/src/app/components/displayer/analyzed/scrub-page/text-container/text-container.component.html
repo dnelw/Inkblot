@@ -1,3 +1,11 @@
 <div>
-    
+    <span *ngFor="let seg of textSegment; let i = index;">
+        <span *ngIf="i == indexVal/inter" class="hightlight">
+            {{ seg }}
+        </span>
+        <span *ngIf="i != indexVal/inter" class="no-highlight">
+            {{ seg }}
+        </span>
+        <!-- {{ i }}{{ seg }} -->
+    </span>
 </div>

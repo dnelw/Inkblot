@@ -7,6 +7,6 @@ export interface IEmotions {
 
 export interface ImageFrame {
     image: string;
-    emotion: IEmotions;
+    emotions: IEmotions;
     text: string;
 }

@@ -36,6 +36,8 @@ export class DisplayerComponent implements OnInit {
     // console.log(event.target.value);
     this.interval = value;
 
+    console.log(value);
+
     this.store.dispatch(new SetInterval(
       this.interval
     ));
