@@ -1,8 +1,11 @@
-<div>
+<div class="slider">
     <mat-slider
+        thumbLabel
+        [displayWith]="formatLabel"
+        tickInterval="1000"
         min="0"
-        max="5"
-        step="1"
-        value="1.5">
-    </mat-slider>
+        max="{{ dataLength }}"
+        [value]="val"
+        (input)="sliderChange($event)"
+        step="{{ interval }}"></mat-slider>
 </div>
