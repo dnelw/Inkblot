@@ -2,9 +2,11 @@
 
   <div id="myDIV" class="w3-bar row">
     <img src="assets/logo.png" class="logo"/>
-    <button class="w3-button w3-hover-teal btn active">DASHBOARD</button>
-    <button class="w3-button w3-hover-teal btn">ACCOUNT</button>
-    <button class="w3-button w3-hover-teal btn">PROGRESS</button>
+    <nav>
+      <a routerLink="/"><button class="w3-button w3-hover-teal btn active">DASHBOARD</button></a>
+      <a routerLink="/progress"><button class="w3-button w3-hover-teal btn">PROGRESS</button></a>
+      <a routerLink="/patient"><button class="w3-button w3-hover-teal btn">PATIENT</button></a>
+    </nav>
   </div>
 
 </div>
