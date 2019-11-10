@@ -3,8 +3,8 @@
   <div class="graph-text">Below are the results from the therapy session.</div>
 
   <div class="graphs">
-    <app-bar-graph *ngIf="chartData" [data]="chartData"></app-bar-graph>
-    <app-bar-graph *ngIf="chartData" [data]="chartData"></app-bar-graph>
+    <app-bar-graph *ngIf="chartData" [dataPoints]="chartData"></app-bar-graph>
+    <app-area-graph *ngIf="chartData" [data]="chartData"></app-area-graph>
   </div>
 
 </div>

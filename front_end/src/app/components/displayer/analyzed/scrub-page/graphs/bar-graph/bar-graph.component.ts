@@ -5,7 +5,7 @@ import {
   Input, 
   ElementRef } 
 from '@angular/core';
-import * as d3 from 'd3';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-bar-graph',
@@ -13,23 +13,20 @@ import * as d3 from 'd3';
   styleUrls: ['./bar-graph.component.scss']
 })
 export class BarGraphComponent implements OnInit {
-  @ViewChild('barchart', {static: true}) private chartContainer: ElementRef;
-  @Input() private data: Array<any>;
-  private margin: any = { top: 20, bottom: 20, left: 20, right: 20};
-  private chart: any;
-  private width: number;
-  private height: number;
-  private xScale: any;
-  private yScale: any;
-  private colors: any;
-  private xAxis: any;
-  private yAxis: any;
+  @ViewChild('lineChart', {static: true}) private chartRef;
+  chart: any;
+  @Input() dataPoints: Array<any>;
+  labels: Array<string>;
+  colors: Array<string>;
 
-  constructor() { }
+  constructor() {
+    this.labels = [];
+    this.colors = ["#99f4ef", "#ff7777","#4caae4","#fa9dcf"];
+  }
 
   ngOnInit() {
     this.createChart();
-    if (this.data) {
+    if (this.dataPoints) {
       this.updateChart();
     }
   }
@@ -39,78 +36,112 @@ export class BarGraphComponent implements OnInit {
       this.updateChart();
     }
   }
+  
 
   createChart() {
-    let element = this.chartContainer.nativeElement;
-    this.width = 500 - this.margin.left - this.margin.right;
-    this.height = 300 - this.margin.top - this.margin.bottom;
-    let svg = d3.select(element).append('svg')
-      .attr('width', 500)
-      .attr('height', 300);
+    let ydat: Array<any> = [];
 
-    // chart plot area
-    this.chart = svg.append('g')
-      .attr('class', 'bars')
-      .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
+    this.dataPoints.map((value, i) => {
+      this.labels.push(value[0]);
+      ydat.push(
+        value[1]
+      );
+    });
 
-    // define X & Y domains
-    let xDomain = this.data.map(d => d[0]);
-    let yDomain = [0, d3.max(this.data, d => d[1])];
+    console.log(ydat);
 
-    // create scales
-    this.xScale = d3.scaleBand().padding(0.1).domain(xDomain).rangeRound([0, this.width]);
-    this.yScale = d3.scaleLinear().domain(yDomain).range([this.height, 0]);
+    this.chart = new Chart(this.chartRef.nativeElement, {
+        type: 'bar',
+        data: {
+          labels: this.labels,
+          datasets: [
+            {
+              backgroundColor: this.colors,
+              data: ydat
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Analysis Bar Chart'
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+    });
+  }
 
-    // bar colors
-    this.colors = d3.scaleLinear().domain([0, this.data.length]).range(<any[]>['red', 'blue']);
 
-    // x & y axis
-    this.xAxis = svg.append('g')
-      .attr('class', 'axis axis-x')
-      .attr('transform', `translate(${this.margin.left}, ${this.margin.top + this.height})`)
-      .call(d3.axisBottom(this.xScale));
-    this.yAxis = svg.append('g')
-      .attr('class', 'axis axis-y')
-      .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`)
-      .call(d3.axisLeft(this.yScale));
+  addData() {
+    let ydat: Array<any> = [];
+
+    console.log("$$$$$$$$$$");
+    this.dataPoints.map((value, i) => {
+      console.log(value);
+      // this.labels.push(value[0]);
+      ydat.push(
+        value[1]
+      );
+    });
+    console.log("$$$$$$$$$$");
+
+    console.log(ydat);
+
+    this.chart.data.labels =  this.labels
+    console.log(this.labels);
+    console.log(ydat);
+    this.chart.data.dataset.push({
+      labels: this.labels,
+      backgroundColor: this.colors,
+      data: ydat
+    });
+    this.chart.update();
+
+    console.log(this.chart.data.labels);
+    console.log(this.chart.data.datasets);
+  }
+
+  removeData() {
+      // this.chart.data.labels = ;
+      this.chart.data.datasets.forEach((dataset) => {
+          dataset.data.pop();
+      });
+      this.chart.update();
   }
 
   updateChart() {
-    // update scales & axis
-    this.xScale.domain(this.data.map(d => d[0]));
-    this.yScale.domain([0, d3.max(this.data, d => d[1])]);
-    this.colors.domain([0, this.data.length]);
-    this.xAxis.transition().call(d3.axisBottom(this.xScale));
-    this.yAxis.transition().call(d3.axisLeft(this.yScale));
+    let ydat: Array<any> = [];
 
-    let update = this.chart.selectAll('.bar')
-      .data(this.data);
+    console.log("$$$$$$$$$$");
+    this.dataPoints.map((value, i) => {
+      console.log(value);
+      // this.labels.push(value[0]);
+      ydat.push(
+        value[1]
+      );
+    });
+    console.log("$$$$$$$$$$");
 
-    // remove exiting bars
-    update.exit().remove();
+    this.chart.data.datasets.pop();
+    this.chart.data.datasets.push({
+      labels: this.labels,
+      backgroundColor: this.colors,
+      data: ydat
+    });
 
-    // update existing bars
-    this.chart.selectAll('.bar').transition()
-      .attr('x', d => this.xScale(d[0]))
-      .attr('y', d => this.yScale(d[1]))
-      .attr('width', d => this.xScale.bandwidth())
-      .attr('height', d => this.height - this.yScale(d[1]))
-      .style('fill', (d, i) => this.colors(i));
-
-    // add new bars
-    update
-      .enter()
-      .append('rect')
-      .attr('class', 'bar')
-      .attr('x', d => this.xScale(d[0]))
-      .attr('y', d => this.yScale(0))
-      .attr('width', this.xScale.bandwidth())
-      .attr('height', 0)
-      .style('fill', (d, i) => this.colors(i))
-      .transition()
-      .delay((d, i) => i * 10)
-      .attr('y', d => this.yScale(d[1]))
-      .attr('height', d => this.height - this.yScale(d[1]));
+    this.chart.update();
   }
+
+  // updateChart() {
+
+  // }
 
 }
