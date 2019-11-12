@@ -48,8 +48,9 @@ Under */Users/daniwang/PRMHackPrinceton/server/capture.py* the API expects 2 thi
 
 * It needs a path to a video, which by default is included in this repo.
 * It also needs the name to a google bucket to push the extracted .wav file to
-> video_path = '../FACIAL_EXPR.mp4'
-> google_bucket = 'audio-hackprinceton19'
+> `video_path = '../FACIAL_EXPR.mp4'`
+
+> `google_bucket = 'audio-hackprinceton19'`
 
 ### Caveats to Running Locally
 * You might experience CORS blocking you from calling your API if you run both the front-end and back-end locally
