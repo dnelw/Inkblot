@@ -33,8 +33,8 @@ To start the API locally run
 The server will by default run on port 80 and you may need sudo permissions.
 > `sudo python3 app.py`
 
-### IMPORTANT NOTE
-#### Pointing the WebApp to the correct API endpoint
+## IMPORTANT NOTE
+### Pointing the WebApp to the correct API endpoint
 The API is meant to be run on a GCP Compute Instance. To direct the front-end to the correct API to use, change
 > `url = "http://35.221.34.118/process/";`
 
@@ -43,7 +43,7 @@ To where your API is being hosted. If running it locally, change it to
 
 This is located in *Inkblot/front_end/src/app/services/getdata.service.ts*
 
-#### Pointing the API to a Bucket
+### Pointing the API to a Bucket
 Under */Users/daniwang/PRMHackPrinceton/server/capture.py* the API expects 2 things
 
 * It needs a path to a video, which by default is included in this repo.
@@ -51,7 +51,7 @@ Under */Users/daniwang/PRMHackPrinceton/server/capture.py* the API expects 2 thi
 > video_path = '../FACIAL_EXPR.mp4'
 > google_bucket = 'audio-hackprinceton19'
 
-#### Caveats to Running Locally
+### Caveats to Running Locally
 * You might experience CORS blocking you from calling your API if you run both the front-end and back-end locally
 * You will need to set up a GCP API Key and enable access to both Google Vision API as well as Google Speech to Text API
   * Vision: https://cloud.google.com/vision/docs/
