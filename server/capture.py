@@ -12,6 +12,7 @@ from google.cloud import storage
 from pydub import AudioSegment
 
 video_path = '../FACIAL_EXPR.mp4'
+google_bucket = 'audio-hackprinceton19'
 client = vision.ImageAnnotatorClient()
 debug_mode = 1
 
@@ -26,7 +27,7 @@ def video_to_mp3(file_name):
         sound = sound.set_channels(1)
         sound.export("%s.wav" % file, format="wav")
         storage_client = storage.Client()
-        bucket = storage_client.get_bucket('audio-hackprinceton19')
+        bucket = storage_client.get_bucket(google_bucket)
         blob = bucket.blob('video.wav')
         blob.upload_from_filename("%s.wav" % file)
     except OSError as err:
